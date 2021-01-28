@@ -1,12 +1,13 @@
 from appscript import app, mactypes
 import requests
+import random
+import string
 
 image_url = input("Enter the url of the img that you want to make wallpaper: ")
 
 r = requests.get(image_url)
-
-imgname= image_url.split('/') [-1]
-
+letters = string.ascii_lowercase
+imgname= ''.join(random.choice(letters) for i in range(10))
 with open(imgname+".png", 'wb') as f:
     f.write(r.content)
 
